@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CARSAT Alsace-Moselle - Centre Artistique de Résonance Sensorielle et d'Arts Thérapeutiques</title>
+    <link rel="icon" href="favicon.ico">
+    <meta property="og:image" content="https://tonsite.fr/images/apercu.jpg">
     <style>
         * {
             margin: 0;
@@ -87,18 +89,22 @@
         }
 
         /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(168, 218, 220, 0.9), rgba(137, 201, 184, 0.9)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0MCIgaGVpZ2h0PSI2MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojQThEQURDO3N0b3Atb3BhY2l0eTowLjMiIC8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojODlDOUI4O3N0b3Atb3BhY2l0eTowLjMiIC8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjE0NDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2dyYWQpIi8+PC9zdmc+');
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
+	.hero {
+		width: 100vw;
+		max-width: 100%;
+		margin: 0;
+		padding: 4rem 0;
+		background: linear-gradient(rgba(168, 218, 220, 0.9), rgba(137, 201, 184, 0.9)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0MCIgaGVpZ2h0PSI2MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojQThEQURDO3N0b3Atb3BhY2l0eTowLjMiIC8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojODlDOUI4O3N0b3Atb3BhY2l0eTowLjMiIC8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjE0NDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2dyYWQpIi8+PC9zdmc+');
+		min-height: 500px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		color: white;
+		position: relative;
+		overflow: hidden;
+	}
+
 
         .hero::before {
             content: '';
@@ -166,11 +172,11 @@
         }
 
         /* Sections */
-        section {
-            padding: 4rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        section:not(.hero) {
+			padding: 4rem 5%;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
 
         .section-title {
             text-align: center;
@@ -529,9 +535,34 @@
         [data-aos].aos-animate {
             opacity: 1;
         }
+		
+		 #loader {
+            position: fixed;
+            z-index: 9999;
+            background: white;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--vert-fonce);
+            animation: fadeOut 1s ease forwards;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
     </style>
 </head>
 <body>
+	<!-- Loader -->
+    <div id="loader">Chargement...</div>
+	
     <!-- Header -->
     <header>
         <nav>
@@ -577,7 +608,22 @@
             </div>
         </div>
     </section>
-
+	
+    <!-- Témoignages Section -->
+    <section id="temoignages">
+        <h2 class="section-title">Témoignages</h2>
+        <div class="retraites-grid">
+            <div class="retraite-card fade-in">
+                <p>"Une expérience transformative. J’en suis ressortie apaisée et inspirée."</p>
+                <strong>– Claire M.</strong>
+            </div>
+            <div class="retraite-card fade-in">
+                <p>"Les ateliers m’ont reconnecté à moi-même comme jamais auparavant."</p>
+                <strong>– David L.</strong>
+            </div>
+        </div>
+    </section>
+	
     <!-- Thérapeutes Section -->
     <section id="therapeutes">
         <h2 class="section-title">Nos Thérapeutes</h2>
@@ -603,39 +649,43 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog">
-        <h2 class="section-title">Blog</h2>
-        <div class="blog-articles">
-            <article class="blog-article fade-in">
-                <div class="blog-image">📝</div>
-                <div class="blog-content">
-                    <h3>Les bienfaits de l'art-thérapie pour les seniors</h3>
-                    <p class="blog-meta">Publié le 15 février 2025 | Par Dr. Marie Dubois</p>
-                    <p>Découvrez comment l'art-thérapie peut améliorer la qualité de vie et le bien-être émotionnel...</p>
-                    <a href="#" class="read-more">Lire la suite →</a>
-                </div>
-            </article>
-            <article class="blog-article fade-in">
-                <div class="blog-image">🎵</div>
-                <div class="blog-content">
-                    <h3>La musique comme outil de guérison</h3>
-                    <p class="blog-meta">Publié le 8 février 2025 | Par Philippe Martin</p>
-                    <p>Explorer les fréquences thérapeutiques et leur impact sur notre bien-être physique et mental...</p>
-                    <a href="#" class="read-more">Lire la suite →</a>
-                </div>
-            </article>
-            <article class="blog-article fade-in">
-                <div class="blog-image">🧘‍♀️</div>
-                <div class="blog-content">
-                    <h3>Mouvement et conscience : la danse thérapeutique</h3>
-                    <p class="blog-meta">Publié le 1er février 2025 | Par Sophie Bernard</p>
-                    <p>Comment le mouvement conscient peut libérer les tensions et favoriser l'expression de soi...</p>
-                    <a href="#" class="read-more">Lire la suite →</a>
-                </div>
-            </article>
-        </div>
-    </section>
+<!-- Blog Section -->
+<section id="blog">
+    <h2 class="section-title">Nos Articles</h2>
+    <div class="blog-articles">
+        <article class="blog-article fade-in">
+            <div class="blog-image">🧘‍♀️</div>
+            <div class="blog-content">
+                <h3><a href="https://upbility.fr/blogs/news/la-pleine-conscience" target="_blank" rel="noopener">La maîtrise de la pleine conscience : Éliminer le stress et améliorer la concentration</a></h3>
+                <p class="blog-meta">Publié le 29 mai 2024 | Par Upbility</p>
+                <p>Découvrez les principes de la pleine conscience (mindfulness), le programme MBSR de Jon Kabat‑Zinn et des exercices pratiques pour apaiser le stress au quotidien.</p>
+                <a href="https://upbility.fr/blogs/news/la-pleine-conscience" target="_blank" class="read-more">Lire l'article →</a>
+            </div>
+        </article>
+
+        <article class="blog-article fade-in">
+            <div class="blog-image">📘</div>
+            <div class="blog-content">
+                <h3><a href="https://fr.wikipedia.org/wiki/R%C3%A9duction_du_stress_bas%C3%A9e_sur_la_pleine_conscience" target="_blank" rel="noopener">Réduction du stress basée sur la pleine conscience (MBSR)</a></h3>
+                <p class="blog-meta">Mis à jour il y a 2 mois | Par Wikipédia</p>
+                <p>Un programme laïque conçu dans les années 1970 par Jon Kabat‑Zinn pour aider les personnes stressées, anxieuses ou en douleur, avec des preuves d’efficacité scientifiquement validées.</p>
+                <a href="https://fr.wikipedia.org/wiki/R%C3%A9duction_du_stress_bas%C3%A9e_sur_la_pleine_conscience" target="_blank" class="read-more">Lire l'article →</a>
+            </div>
+        </article>
+
+        <article class="blog-article fade-in">
+            <div class="blog-image">🎓</div>
+            <div class="blog-content">
+                <h3><a href="https://www.spadreams.fr/etudes/anti-stress/etude-sur-les-effets-de-la-pleine-conscience-sur-la-reduction-du-stress/" target="_blank" rel="noopener">Étude : le MBSR réduit le stress chez les étudiants</a></h3>
+                <p class="blog-meta">Publié en août 2013 | Par SpaDreams</p>
+                <p>Résultats d’une étude norvégienne indiquant que la réduction du stress basée sur la pleine conscience (MBSR) diminue la détresse psychologique chez les étudiantes en médecine et psychologie.</p>
+                <a href="https://www.spadreams.fr/etudes/anti-stress/etude-sur-les-effets-de-la-pleine-conscience-sur-la-reduction-du-stress/" target="_blank" class="read-more">Lire l'article →</a>
+            </div>
+        </article>
+    </div>
+</section>
+
+
 
     <!-- Contact Section -->
     <section id="contact">
@@ -656,22 +706,22 @@
                     <span>Lun-Ven: 9h-18h | Sam: 9h-12h</span>
                 </div>
             </div>
-            <form class="contact-form fade-in">
-                <h3>Envoyez-nous un message</h3>
-                <div class="form-group">
-                    <label for="name">Nom complet</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Envoyer le message</button>
-            </form>
+			<form class="contact-form fade-in">
+				<h3>Envoyez-nous un message</h3>
+				<div class="form-group">
+					<label for="name">Nom complet</label>
+					<input type="text" id="name" name="name" required>
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" required>
+				</div>
+				<div class="form-group">
+					<label for="message">Message</label>
+					<textarea id="message" name="message" required></textarea>
+				</div>
+				<button type="submit" class="submit-btn">Envoyer le message</button>
+			</form>
         </div>
     </section>
 
@@ -679,41 +729,26 @@
     <footer>
         <p>&copy; 2025 CARSAT Alsace-Moselle - Centre Artistique de Résonance Sensorielle</p>
         <p>Tous droits réservés</p>
-        <div class="social-links">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">LinkedIn</a>
-        </div>
     </footer>
 
-    <script>
-        // Toggle mobile menu
+        <script>
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    document.getElementById('navLinks').classList.remove('active');
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    setTimeout(() => {
+                        document.getElementById('navLinks').classList.remove('active');
+                    }, 100);
                 }
             });
         });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -722,32 +757,25 @@
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Form submission
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
             this.reset();
         });
 
-        // Add active state to navigation
         window.addEventListener('scroll', () => {
             let current = '';
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
+            document.querySelectorAll('section').forEach(section => {
+                const top = section.offsetTop;
+                const height = section.clientHeight;
+                if (scrollY >= (top - 200)) {
                     current = section.getAttribute('id');
                 }
             });
-
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.style.backgroundColor = '';
                 if (link.getAttribute('href').slice(1) === current) {
